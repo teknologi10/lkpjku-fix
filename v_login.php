@@ -24,7 +24,7 @@
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Masukkan username dan password Anda</p>
+                <p class="login-box-msg">Masukkan username dan password</p>
 
                 <?php if (!empty(session()->getflashdata('gagal'))) { ?>
                     <div class="alert alert-warning">
