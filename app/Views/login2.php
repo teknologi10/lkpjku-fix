@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from hencework.com/theme/admintres/demo-1/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Jul 2021 00:06:14 GMT -->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Admintres I Fast build Admin dashboard for any platform</title>
+    <meta name="description" content="Admintres is a Dashboard & Admin Site Responsive Template by hencework." />
+    <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Admintres Admin, Admintresadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
+    <meta name="author" content="hencework" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
+    <!-- vector map CSS -->
+    <link href="<?= base_url('theme'); ?>/vendors/bower_components/jasny-bootstrap/dist/css/jasny-bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+
+
+    <!-- Custom CSS -->
+    <link href="<?= base_url('theme/admintres/demo-1'); ?>/dist/css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div class="wrapper  pa-0">
+        <!-- Main Content -->
+        <div class="page-wrapper pa-0 ma-0 auth-page" style="background:url(<?= base_url('img'); ?>/belakang.jpg);">
+            <div class="container">
+                <!-- Row -->
+                <div class="table-struct full-width full-height">
+                    <div class="table-cell vertical-align-middle auth-form-wrap">
+                        <div class="auth-form  ml-auto mr-auto no-float card-view pt-30 pb-30" style="background:transparent">
+                            <div class="row">
+                                <?php if (session()->getFlashdata('pesan')) : ?>
+                                    <div class="alert alert-info" role="alert">
+                                        <?= session()->getFlashdata('pesan'); ?>
+                                    </div>
+                                <?php endif; ?>
+                                <div class="col-sm-12 col-xs-12">
+                                    <div class="mb-30">
+                                        <h3 class="text-center txt-dark mb-10">Sign in to Admintres</h3>
+                                        <h6 class="text-center nonecase-font txt-grey">Enter your details below</h6>
+                                    </div>
+                                    <div class="form-wrap">
+                                        <form action="<?= base_url('dashboard'); ?>">
+                                            <div class="form-group">
+                                                <label class="control-label mb-10" for="exampleInputEmail_2">Username</label>
+                                                <input type="text" name="username" class="form-control <?= ($validation->hasError('username')) ? 'is-invalid' : ''; ?>" required="" id="exampleInputEmail_2" placeholder="Enter email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="pull-left control-label mb-10" for="exampleInputpwd_2">Password</label>
+                                                <a class="capitalize-font txt-orange block mb-10 pull-right font-12" href="forgot-password.html">forgot password ?</a>
+                                                <div class="clearfix"></div>
+                                                <input type="password" name="password" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" required="" id="exampleInputpwd_2" placeholder="Enter pwd">
+                                            </div>
+
+                                            <div class="form-group">
+
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="form-group text-center">
+                                                <button type="submit" class="btn btn-orange btn-rounded">sign in</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Row -->
+            </div>
+
+        </div>
+        <!-- /Main Content -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- JavaScript -->
+
+    <!-- jQuery -->
+    <script src="<?= base_url('theme'); ?>/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?= base_url('theme'); ?>/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?= base_url('theme'); ?>/vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
+
+    <!-- Slimscroll JavaScript -->
+    <script src="<?= base_url('theme/admintres/demo-1'); ?>/dist/js/jquery.slimscroll.js"></script>
+
+    <!-- Init JavaScript -->
+    <script src="<?= base_url('theme/admintres/demo-1'); ?>/dist/js/init.js"></script>
+</body>
+
+<!-- Mirrored from hencework.com/theme/admintres/demo-1/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Jul 2021 00:06:14 GMT -->
+
+</html>
