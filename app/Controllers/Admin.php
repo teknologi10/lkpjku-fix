@@ -2,8 +2,16 @@
 
 namespace App\Controllers;
 
+use App\Models\Model_Rekomendasi;
+
 class Admin extends BaseController
 {
+    protected $Model_Rekomendasi;
+    public function __construct()
+    {
+        $this->Model_Rekomendasi = new Model_Rekomendasi();
+    }
+
     public function index()
     {
         $data = [
@@ -65,8 +73,13 @@ class Admin extends BaseController
 
     public function dashboard()
     {
+        // $data = [
+        //     'judul' => 'Daftar Komik'
+        // ];
         $data = [
-            'judul' => 'Daftar Komik'
+            'judul' => 'Selamat Datang di LKPJKU',
+            'data_rekomendasi' => $this->Model_Rekomendasi->get_data_rekomendasi(),
+            //'content' => 'rekomendasi/v_list',
         ];
         return view('pemerintahan/dashboard', $data);
     }

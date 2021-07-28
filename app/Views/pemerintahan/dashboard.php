@@ -48,13 +48,25 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                            </tr>
+                                            <?php $no = 1;
+                                            foreach ($data_rekomendasi as $key => $value) { ?>
+                                                <tr>
+                                                    <td><?= $no++; ?></td>
+                                                    <td><?= $value['rekomendasi']; ?></td>
+                                                    <?php if ($value['tanggapan'] == Null) { ?>
+                                                        <td><i>
+                                                                <font color='red'>belum diisi</font>
+                                                            </i></td>
+                                                    <?php } else { ?>
+                                                        <td><?= $value['tanggapan']; ?></td>
+                                                    <?php } ?>
+                                                    <td><?= $value['nm_opd']; ?></td>
+                                                    <td>
+                                                        <a href="<?= base_url('Rekomendasi/edit/' . $value['id_rekomendasi']) ?>" class="btn btn-warning">Edit</a>
+                                                        <a href="<?= base_url('Rekomendasi/hapus/' . $value['id_rekomendasi']) ?>" class="btn btn-danger" onclick="return confirm ('Apakah yakin ingin menghapus data ?')">Hapus</a>
+                                                    </td>
+                                                </tr>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
