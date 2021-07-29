@@ -73,13 +73,8 @@ class Admin extends BaseController
 
     public function dashboard()
     {
-        // $data = [
-        //     'judul' => 'Daftar Komik'
-        // ];
         $data = [
-            'judul' => 'Selamat Datang di LKPJKU',
             'data_rekomendasi' => $this->Model_Rekomendasi->get_data_rekomendasi(),
-            //'content' => 'rekomendasi/v_list',
         ];
         return view('pemerintahan/dashboard', $data);
     }
@@ -87,10 +82,80 @@ class Admin extends BaseController
     public function tanggapan()
     {
         $data = [
-            'judul' => 'Daftar Komik'
+            'opd' => $this->Model_Rekomendasi->get_data_opd(),
         ];
-
         return view('pemerintahan/tanggapan', $data);
+    }
+
+    public function save_tanggapan()
+    {
+        //proteksi halaman
+        // if (session()->get('username') == '') {
+        //     session()->setFlashdata('gagal', 'Anda belum login !');
+        //     return redirect()->to(base_url('login'));
+        // }
+        //end proteksi halaman
+        if ($this->request->getPost('opd') == '-') {
+            session()->setflashdata('gagal', 'OPD Pengampu belum dipilih !');
+            return redirect()->to(base_url('Admin/tanggapan'));
+        } else {
+            $data = [
+                'id_opd' => $this->request->getPost('opd'),
+                'rekomendasi' => $this->request->getPost('rekomendasi'),
+            ];
+            $this->Model_Rekomendasi->insert_data_rekomendasi($data);
+            session()->setflashdata('success', 'Data Berhasil Ditambahkan');
+            return redirect()->to(base_url('Admin/dashboard'));
+        }
+    }
+    public function edit_tanggapan($id_rekomendasi)
+    {
+        // //proteksi halaman
+        // if (session()->get('username') == '') {
+        //     session()->setFlashdata('gagal', 'Anda belum login !');
+        //     return redirect()->to(base_url('login'));
+        // }
+        //end proteksi halaman
+        $data = [
+            'data_rekomendasi' => $this->Model_Rekomendasi->edit_data_rekomendasi($id_rekomendasi),
+            'get_opd' => $this->Model_Rekomendasi->get_data_opd(),
+        ];
+        return view('pemerintahan/edit_tanggapan', $data);
+    }
+
+    public function update_tanggapan($id_rekomendasi)
+    {
+        //proteksi halaman
+        // if (session()->get('username') == '') {
+        //     session()->setFlashdata('gagal', 'Anda belum login !');
+        //     return redirect()->to(base_url('login'));
+        // }
+        //end proteksi halaman
+        if ($this->request->getPost('opd') == '-') {
+            session()->setflashdata('gagal', 'OPD Pengampu belum dipilih !');
+            return redirect()->to(base_url('Admin/edit_tanggapan'));
+        } else {
+            $data = [
+                'id_opd' => $this->request->getPost('opd'),
+                'rekomendasi' => $this->request->getPost('rekomendasi'),
+            ];
+            $this->Model_Rekomendasi->update_data_rekomendasi($data, $id_rekomendasi);
+            session()->setflashdata('success', 'Data Berhasil Diubah');
+            return redirect()->to(base_url('Admin/dashboard'));
+        }
+    }
+
+    public function hapus_tanggapan($id_rekomendasi)
+    {
+        //proteksi halaman
+        // if (session()->get('username') == '') {
+        //     session()->setFlashdata('gagal', 'Anda belum login !');
+        //     return redirect()->to(base_url('login'));
+        // }
+        //end proteksi halaman
+        $this->Model_Rekomendasi->delete_data_rekomendasi($id_rekomendasi);
+        session()->setflashdata('success', 'Data Berhasil Dihapus');
+        return redirect()->to(base_url('Admin/dashboard'));
     }
 
     public function verifikasi()

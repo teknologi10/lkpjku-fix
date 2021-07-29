@@ -6,7 +6,7 @@
         <!-- Title -->
         <div class="row heading-bg">
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                <h5 class="txt-dark">Tanggapan Rekomendasi OPD</h5>
+                <h5 class="txt-dark">Edit Tanggapan Rekomendasi OPD</h5>
             </div>
             <!-- Breadcrumb -->
             <!-- <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
@@ -27,7 +27,7 @@
                     <div class="panel-wrapper collapse in">
                         <div class="panel-body pt-0">
                             <div class="form-wrap">
-                                <form action="<?= base_url('Admin/save_tanggapan'); ?>" method="POST" class="form-horizontal">
+                                <form action="<?= base_url('Admin/update_tanggapan/' . $data_rekomendasi['id_rekomendasi']); ?>" method="POST" class="form-horizontal">
                                     <div class="form-body">
                                         <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-account-box mr-10"></i>Form Input Rekomendasi</h6>
                                         <hr class="light-grey-hr" />
@@ -37,7 +37,7 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-md-2 text-left">Rekomendasi</label>
                                                     <div class="col-md-10">
-                                                        <input type="text" class="form-control" name="rekomendasi" required>
+                                                        <input type="text" class="form-control" name="rekomendasi" value="<?= $data_rekomendasi['rekomendasi'] ?>" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -47,10 +47,11 @@
                                                     <label class="control-label col-md-2 text-left">OPD Pengampu</label>
                                                     <div class="col-md-10">
                                                         <select name="opd" class=" form-control">
-                                                            <option value="-">-</option>
-                                                            <?php foreach ($opd as $key => $isi) { ?>
-                                                                <option value="<?= $isi['id_opd']; ?>"><?= $isi['nm_opd']; ?></option>
-                                                            <?php } ?>
+                                                            <?php foreach ($get_opd as $key => $isi) { ?>
+                                                                <option value="<?= $isi['id_opd']; ?>" <?php if ($data_rekomendasi['id_opd'] == $isi['id_opd']) {
+                                                                                                            echo "selected";
+                                                                                                        } ?>><?= $isi['nm_opd']; ?></option>
+                                                            <?php  } ?>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -69,7 +70,7 @@
                                                 <div class="row">
 
                                                     <div class="col-md-offset-3 col-md-9">
-                                                        <button type="submit" class="btn btn-success  mr-10">Simpan</button>
+                                                        <button type="submit" class="btn btn-success  mr-10">Update</button>
                                                         <!-- <button type="button" class="btn btn-default">Cancel</button> -->
                                                     </div>
                                                 </div>
