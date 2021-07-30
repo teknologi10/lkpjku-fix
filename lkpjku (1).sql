@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Jul 2021 pada 04.23
+-- Waktu pembuatan: 30 Jul 2021 pada 09.32
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 7.4.20
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `lkpjku`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `t_detail_rekomendasi`
+--
+
+CREATE TABLE `t_detail_rekomendasi` (
+  `id_detail_rekomendasi` int(11) NOT NULL,
+  `id_rekomendasi` int(11) NOT NULL,
+  `id_opd` int(11) NOT NULL,
+  `tanggapan` text DEFAULT NULL,
+  `persetujuan` varchar(15) DEFAULT NULL,
+  `alasan_ditolak` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `t_detail_rekomendasi`
+--
+
+INSERT INTO `t_detail_rekomendasi` (`id_detail_rekomendasi`, `id_rekomendasi`, `id_opd`, `tanggapan`, `persetujuan`, `alasan_ditolak`) VALUES
+(2, 1, 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -56,22 +78,26 @@ CREATE TABLE `t_rekomendasi` (
   `id_rekomendasi` int(11) NOT NULL,
   `id_opd` int(11) NOT NULL,
   `rekomendasi` text NOT NULL,
-  `tanggapan` text DEFAULT NULL,
-  `persetujuan` varchar(15) DEFAULT NULL,
-  `alasan_ditolak` text DEFAULT NULL
+  `asal_rekomendasi` varchar(15) DEFAULT NULL,
+  `tgl_rekomendasi` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `t_rekomendasi`
 --
 
-INSERT INTO `t_rekomendasi` (`id_rekomendasi`, `id_opd`, `rekomendasi`, `tanggapan`, `persetujuan`, `alasan_ditolak`) VALUES
-(8, 1, 'Pembelajaran setiap sekolah harus diawasi dengan baik', NULL, NULL, NULL),
-(10, 3, 'wisata daerah lebih ditingkatkan', NULL, NULL, NULL);
+INSERT INTO `t_rekomendasi` (`id_rekomendasi`, `id_opd`, `rekomendasi`, `asal_rekomendasi`, `tgl_rekomendasi`) VALUES
+(20, 1, 'dfg', 'Fraksi', '2021-07-30');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `t_detail_rekomendasi`
+--
+ALTER TABLE `t_detail_rekomendasi`
+  ADD PRIMARY KEY (`id_detail_rekomendasi`);
 
 --
 -- Indeks untuk tabel `t_opd`
@@ -90,6 +116,12 @@ ALTER TABLE `t_rekomendasi`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `t_detail_rekomendasi`
+--
+ALTER TABLE `t_detail_rekomendasi`
+  MODIFY `id_detail_rekomendasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT untuk tabel `t_opd`
 --
 ALTER TABLE `t_opd`
@@ -99,7 +131,7 @@ ALTER TABLE `t_opd`
 -- AUTO_INCREMENT untuk tabel `t_rekomendasi`
 --
 ALTER TABLE `t_rekomendasi`
-  MODIFY `id_rekomendasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_rekomendasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

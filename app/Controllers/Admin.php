@@ -95,15 +95,27 @@ class Admin extends BaseController
         //     return redirect()->to(base_url('login'));
         // }
         //end proteksi halaman
-        if ($this->request->getPost('opd') == '-') {
+        if ($this->request->getPost('asal_rekomendasi') == '-') {
+            session()->setflashdata('gagal', 'Asal Rekomendasi belum dipilih !');
+            return redirect()->to(base_url('Admin/tanggapan'));
+        } else if ($this->request->getPost('opd') == '-') {
             session()->setflashdata('gagal', 'OPD Pengampu belum dipilih !');
             return redirect()->to(base_url('Admin/tanggapan'));
         } else {
             $data = [
                 'id_opd' => $this->request->getPost('opd'),
                 'rekomendasi' => $this->request->getPost('rekomendasi'),
+                'asal_rekomendasi' => $this->request->getPost('asal_rekomendasi'),
+                'tgl_rekomendasi' => date('Y-m-d'),
             ];
             $this->Model_Rekomendasi->insert_data_rekomendasi($data);
+
+
+            $data2 = [
+                'id_rekomendasi' => 1,
+                'id_opd' => $this->request->getPost('opd'),
+            ];
+            $this->Model_Rekomendasi->insert_data_detail_rekomendasi($data2);
             session()->setflashdata('success', 'Data Berhasil Ditambahkan');
             return redirect()->to(base_url('Admin/dashboard'));
         }

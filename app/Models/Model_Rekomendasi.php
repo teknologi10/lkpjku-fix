@@ -9,13 +9,18 @@ class Model_Rekomendasi extends Model
     public function get_data_rekomendasi()
     {
         return $this->db->table('t_rekomendasi')
-            ->join('t_opd', 't_opd.id_opd=t_rekomendasi.id_opd')
+            ->join('t_detail_rekomendasi', 't_rekomendasi.id_rekomendasi=t_detail_rekomendasi.id_rekomendasi')
+            ->join('t_opd', 't_opd.id_opd=t_detail_rekomendasi.id_opd')
             ->get()
             ->getResultArray();
     }
     public function insert_data_rekomendasi($data)
     {
         return $this->db->table('t_rekomendasi')->insert($data);
+    }
+    public function insert_data_detail_rekomendasi($data2)
+    {
+        return $this->db->table('t_detail_rekomendasi')->insert($data2);
     }
     public function get_data_opd()
     {

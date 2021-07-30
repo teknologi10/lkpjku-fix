@@ -37,11 +37,22 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-md-2 text-left">Rekomendasi</label>
                                                     <div class="col-md-10">
-                                                        <input type="text" class="form-control" name="rekomendasi" required>
+                                                        <textarea class="form-control" name="rekomendasi" rows="5" required></textarea>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!--/span-->
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-2 text-left">Asal Rekomendasi</label>
+                                                    <div class="col-md-10">
+                                                        <select name="asal_rekomendasi" class=" form-control">
+                                                            <option value="-">-</option>
+                                                            <option value="DPRD">DPRD</option>
+                                                            <option value="Fraksi">Fraksi</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="control-label col-md-2 text-left">OPD Pengampu</label>
@@ -55,7 +66,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!--/span-->
                                         </div>
                                         <!-- /Row -->
                                     </div>
