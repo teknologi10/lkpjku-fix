@@ -6,7 +6,11 @@ class Opd extends BaseController
 {
     public function index()
     {
-        return view('welcome_message');
+        $data = [
+            'validation' => \Config\Services::validation()
+        ];
+
+        return view('login2', $data);
     }
 
     public function dashboard()

@@ -102,6 +102,8 @@ class Admin extends BaseController
             $data = [
                 'id_opd' => $this->request->getPost('opd'),
                 'rekomendasi' => $this->request->getPost('rekomendasi'),
+                // 'asal_rekomendasi' => $this->request->getPost('asal_rekomendasi'),
+                // 'tgl_rekomendasi' => date('Y-m-d'),
             ];
             $this->Model_Rekomendasi->insert_data_rekomendasi($data);
             session()->setflashdata('success', 'Data Berhasil Ditambahkan');
